@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import SymptomForm from '@/components/SymptomForm';
 import TriageResult from '@/components/TriageResult';
+import VoiceSession from '@/components/VoiceSession';
 import { getTriage, TriageRequest, TriageResponse } from '@/lib/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HeartPulse, Shield, Activity, Globe } from 'lucide-react';
@@ -155,11 +156,13 @@ export default function Home() {
 
           <AnimatePresence mode="wait">
             {!result ? (
-              <SymptomForm 
-                key="form"
-                isLoading={isLoading} 
-                onSubmit={handleTriageSubmit} 
-              />
+              <div key="form" className="space-y-8">
+                <VoiceSession />
+                <SymptomForm 
+                  isLoading={isLoading} 
+                  onSubmit={handleTriageSubmit} 
+                />
+              </div>
             ) : (
               <TriageResult 
                 key="result"

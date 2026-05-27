@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import QueryProvider from "@/components/QueryProvider";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -48,11 +49,13 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider>
-          <LanguageProvider>
-            <AuthProvider>
-              {children}
-            </AuthProvider>
-          </LanguageProvider>
+          <QueryProvider>
+            <LanguageProvider>
+              <AuthProvider>
+                {children}
+              </AuthProvider>
+            </LanguageProvider>
+          </QueryProvider>
         </ThemeProvider>
       </body>
     </html>

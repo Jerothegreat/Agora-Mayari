@@ -29,7 +29,7 @@ class ErrorBoundary extends Component<Props, State> {
       console.error('Error caught by boundary:', error, errorInfo);
     }
     
-    // In production, you could send to error tracking service
+    // In a hosted environment, this could be sent to an error tracking service.
     // Example: Sentry.captureException(error);
   }
 

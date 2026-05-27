@@ -11,10 +11,10 @@ npm install
 # Run development server
 npm run dev
 
-# Build for production
+# Build locally
 npm run build
 
-# Start production server
+# Start the local built server
 npm start
 
 # Run linter
@@ -195,13 +195,10 @@ className="px-6 py-3 bg-white border-2 border-slate-200 text-slate-700 rounded-x
 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-teal-500"
 ```
 
-## 🚀 Deployment
+## Local Build
 
-### Vercel
-- Set the project Root Directory to `frontend`
-- Add `NEXT_PUBLIC_API_URL=https://your-backend-project.vercel.app/api`
+The frontend is intended to run locally with the backend at `http://localhost:3000/api`.
 
-### Manual Build
 ```bash
 npm run build
 npm start
@@ -224,7 +221,7 @@ npm run type-check
 # Run linter
 npm run lint
 
-# Build to catch production issues
+# Build to catch local build issues
 npm run build
 ```
 

@@ -73,6 +73,37 @@ export interface TriageResponse {
   trust_statement?: string;
 }
 
+export type VoiceTranscriptTurn = {
+  role: "user" | "assistant";
+  text: string;
+  timestamp: number;
+};
+
+export type StartVoiceSessionResponse = {
+  channelName: string;
+  token: string;
+  uid: string;
+  agentId: string;
+  sessionId: string;
+};
+
+export type EndVoiceSessionRequest = {
+  sessionId: string;
+  agentId: string;
+  channelName: string;
+  transcript: VoiceTranscriptTurn[];
+  urgency: "low" | "medium" | "high" | null;
+  specialty: string | null;
+};
+
+export type EndVoiceSessionResponse = {
+  sessionId: string;
+  triageResult: TriageResponse;
+  urgency: "low" | "medium" | "high";
+  specialty: string;
+  appointmentId: string | null;
+};
+
 export interface DashboardSummary {
   total_reports_today: number;
   avg_urgency_score: number;
@@ -152,7 +183,6 @@ const getDefaultApiBase = () => {
   if (process.env.NODE_ENV === 'development') {
     return 'http://localhost:3000';
   }
-  // In production, default to current origin if no API URL is provided
   if (typeof window !== 'undefined') {
     return window.location.origin;
   }
@@ -174,7 +204,7 @@ const parseErrorMessage = async (response: Response, fallbackMessage: string) =>
     if (text.trim()) {
       const lowered = text.trim().toLowerCase();
       if (lowered.startsWith('<!doctype html') || lowered.startsWith('<html')) {
-        return `${fallbackMessage}. The API at "${API_URL}" responded with HTML instead of JSON. This usually means the API endpoint is missing, misconfigured, or the backend crashed. Check your NEXT_PUBLIC_API_URL and Vercel environment variables (DATABASE_URL, etc.).`;
+        return `${fallbackMessage}. The API at "${API_URL}" responded with HTML instead of JSON. This usually means the API endpoint is missing, misconfigured, or the backend crashed. Check NEXT_PUBLIC_API_URL and the local backend environment variables.`;
       }
       return text.trim();
     }
@@ -198,6 +228,25 @@ export async function getTriage(data: TriageRequest): Promise<TriageResponse> {
     body: JSON.stringify(data),
   });
   return readJson(response, 'Failed to get triage result');
+}
+
+export async function startVoiceSession(): Promise<{ success: true; data: StartVoiceSessionResponse }> {
+  const response = await fetch(`${API_URL}/agora/session/start`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+  return readJson(response, "Failed to start voice session");
+}
+
+export async function endVoiceSession(
+  data: EndVoiceSessionRequest,
+): Promise<{ success: true; data: EndVoiceSessionResponse }> {
+  const response = await fetch(`${API_URL}/agora/session/end`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return readJson(response, "Failed to end voice session");
 }
 
 export async function getDashboardSummary(): Promise<DashboardSummary> {

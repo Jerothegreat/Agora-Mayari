@@ -158,7 +158,7 @@ export default function PrivacyPage() {
                 <div className="rounded-2xl border border-amber-100 bg-amber-50/80 p-5 shadow-sm dark:border-amber-500/30 dark:bg-slate-900/80">
                   <p className="font-display text-[11px] font-black uppercase tracking-normal text-amber-700">Privacy Office</p>
                   <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-600">
-                    Privacy requests may be sent to the Haliya privacy team through the official support channel provided by the institution operating this deployment.
+                    Privacy requests may be sent to the Haliya privacy team through the official support channel provided by the institution operating this local instance.
                   </p>
                 </div>
               </div>

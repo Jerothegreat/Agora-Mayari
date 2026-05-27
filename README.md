@@ -11,7 +11,7 @@
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-Deploy-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Local Only](https://img.shields.io/badge/Run-Local%20Only-0f766e?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Private-red?style=for-the-badge)
 
 </div>
@@ -32,7 +32,7 @@
 10. [Available Scripts](#available-scripts)
 11. [UI/UX Design Direction](#uiux-design-direction)
 12. [Data Privacy and Medical Disclaimer](#data-privacy-and-medical-disclaimer)
-13. [Production Readiness](#production-readiness)
+13. [Local Readiness](#local-readiness)
 14. [Success Metrics](#success-metrics)
 15. [Delivery Phases](#delivery-phases)
 16. [Team](#team)
@@ -131,9 +131,9 @@ A data-driven AI triage web platform designed to:
   <tbody>
     <tr>
       <td>Database</td>
-      <td><img src="https://img.shields.io/badge/Neon_Postgres-00E599?style=flat&logo=postgresql&logoColor=white" alt="Neon Postgres"></td>
+      <td><img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL"></td>
       <td>--</td>
-      <td>Serverless managed relational data store</td>
+      <td>PostgreSQL database used by the local backend</td>
     </tr>
     <tr>
       <td>Query Layer</td>
@@ -143,9 +143,9 @@ A data-driven AI triage web platform designed to:
     </tr>
     <tr>
       <td>Database Driver</td>
-      <td><img src="https://img.shields.io/badge/Neon_Serverless-00E599?style=flat&logo=postgresql&logoColor=white" alt="Neon Serverless"></td>
+      <td><img src="https://img.shields.io/badge/PostgreSQL_Driver-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL Driver"></td>
       <td>1.x</td>
-      <td>HTTP-based PostgreSQL driver for edge/serverless</td>
+      <td>PostgreSQL driver for backend database access</td>
     </tr>
     <tr>
       <td>Schema Tooling</td>
@@ -227,9 +227,9 @@ A data-driven AI triage web platform designed to:
     </tr>
     <tr>
       <td>Blob Storage</td>
-      <td><img src="https://img.shields.io/badge/Vercel_Blob-000000?style=flat&logo=vercel&logoColor=white" alt="Vercel Blob"></td>
+      <td><img src="https://img.shields.io/badge/PostgreSQL_Documents-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL Documents"></td>
       <td>2.3</td>
-      <td>Available for large file offloading</td>
+      <td>Current uploads are stored in PostgreSQL for local runtime</td>
     </tr>
   </tbody>
 </table>
@@ -351,10 +351,7 @@ sequenceDiagram
 
 ```
 codekada/
-├── api/                         # Vercel serverless entrypoint
-│   ├── [...path].ts
-│   └── index.ts
-├── backend/                     # Express + Drizzle API
+├── backend/                     # Express + Drizzle API for local runtime
 │   ├── api/
 │   ├── configs/
 │   ├── controllers/
@@ -391,12 +388,11 @@ codekada/
 ├── packages/
 │   └── db/
 ├── docs/
-│   ├── DEPLOYMENT.md
+│   ├── LOCAL_RUNTIME.md
 │   ├── FEATURES.md
 │   ├── PITCH.md
 │   └── WINNING_CHECKLIST.md
 ├── package.json
-├── vercel.json
 └── README.md
 ```
 
@@ -554,7 +550,7 @@ Update `.env` with your actual values:
 GROQ_API_KEY=your_groq_api_key
 GROQ_MODEL=llama-3.3-70b-versatile
 DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE?sslmode=verify-full
-WEB_ORIGINS=http://localhost:5173,https://your-app-domain.vercel.app
+WEB_ORIGINS=http://localhost:5173,http://localhost:3000
 ACCESS_TOKEN_SECRET=your_access_token_secret
 REFRESH_TOKEN_SECRET=your_refresh_token_secret
 PORT=3000
@@ -579,9 +575,7 @@ The backend API will be available at `http://localhost:3000/api`.
 
 ## Judge Access Flow
 
-Main website: `https://haliya-codekada.vercel.app/`
-
-For local review, run `npm run dev` from the main repository and open `http://localhost:5173`.
+This project is configured for local review only. Run `npm run dev` from the main repository and open `http://localhost:5173`.
 
 ### Patient Flow
 
@@ -592,15 +586,15 @@ Demo patient access:
 
 Suggested review path:
 
-1. Open the landing page at `https://haliya-codekada.vercel.app/`.
-2. Go to `https://haliya-codekada.vercel.app/triage` from the shared header.
+1. Open the landing page at `http://localhost:5173/`.
+2. Go to `http://localhost:5173/triage` from the shared header.
 3. Test the AI Triage Engine using the `Describe Symptoms` mode by entering a symptom description.
 4. Repeat the triage flow using the `Select Symptoms` mode to review the guided symptom picker.
 5. Review the triage result, including urgency level, urgency score, explanation, next steps, red flags, evidence ledger, and facility recommendations.
-6. Open `https://haliya-codekada.vercel.app/history` to view saved symptom assessment history from the current browser session.
-7. Go to `https://haliya-codekada.vercel.app/auth/login`, click the demo patient access card, and submit the login form.
-8. Review `https://haliya-codekada.vercel.app/dashboard/patient` for appointments, patient health summary, booking flow, facility selection, appointment details, and cancellation flow.
-9. Use `https://haliya-codekada.vercel.app/dashboard/patient/profile` to review the patient profile and account management area.
+6. Open `http://localhost:5173/history` to view saved symptom assessment history from the current browser session.
+7. Go to `http://localhost:5173/auth/login`, click the demo patient access card, and submit the login form.
+8. Review `http://localhost:5173/dashboard/patient` for appointments, patient health summary, booking flow, facility selection, appointment details, and cancellation flow.
+9. Use `http://localhost:5173/dashboard/patient/profile` to review the patient profile and account management area.
 
 ### Provider Flow
 
@@ -611,21 +605,21 @@ Demo provider access:
 
 Suggested review path:
 
-1. Open `https://haliya-codekada.vercel.app/facility/login`.
+1. Open `http://localhost:5173/facility/login`.
 2. Click the demo facility access card and submit the login form.
-3. Review `https://haliya-codekada.vercel.app/dashboard/facility` for the live provider queue, total queue, pending review, confirmed appointments, and average risk score.
+3. Review `http://localhost:5173/dashboard/facility` for the live provider queue, total queue, pending review, confirmed appointments, and average risk score.
 4. Use the queue filters to switch between pending, confirmed, cancelled, and all appointments.
 5. Open a patient appointment to review symptom summary, AI triage score, appointment details, and triage explanation.
 6. Confirm or cancel pending appointments to test facility queue actions.
 7. Submit clinician feedback to compare provider judgment against the AI triage result.
 8. Review the clinician feedback dashboard, including agreement rate, correction counts, and confusion matrix.
-9. Use `https://haliya-codekada.vercel.app/dashboard/facility/profile` to review the facility profile and account management area.
+9. Use `http://localhost:5173/dashboard/facility/profile` to review the facility profile and account management area.
 
 ### Public Health Flow
 
 Optional judge review path:
 
-1. Open `https://haliya-codekada.vercel.app/public-health`.
+1. Open `http://localhost:5173/public-health`.
 2. Review dashboard summary cards, regional signal map, trend charts, top symptom signals, anomaly engine, and active alert feed.
 3. Use `Generate Situation Brief` to run the public-health intelligence flow when backend data is available.
 
@@ -651,13 +645,13 @@ Create a root `.env` file based on `.env.example`:
 
 | Command             | Description                                   |
 | :------------------ | :-------------------------------------------- |
-| `npm run dev`       | Start the Next.js development server          |
-| `npm run build`     | Create an optimized production build          |
-| `npm run start`     | Serve the production build                    |
-| `npm run lint`      | Run ESLint static analysis                    |
-| `npm run typecheck` | Run TypeScript type checking without emitting |
-| `npm run ci`        | Run lint, typecheck, and build sequentially   |
-| `npm run seed`      | Seed the database with initial data           |
+| `npm run dev`        | Start the local backend and frontend together |
+| `npm run dev:api`    | Start only the local Express backend          |
+| `npm run dev:web`    | Start only the local Next.js frontend         |
+| `npm run build`      | Build backend and frontend locally            |
+| `npm run build:api`  | Build only the backend                        |
+| `npm run build:web`  | Build only the frontend                       |
+| `npm run lint`       | Run frontend ESLint static analysis           |
 
 ---
 
@@ -731,21 +725,20 @@ Haliya processes sensitive symptom information to provide AI-assisted triage, ap
 
 ---
 
-## Production Readiness
+## Local Readiness
 
 ### Operational Health
 
 - Health probe endpoint: `GET /api/health`
-- CI-safe validation pipeline: `npm run ci`
+- Local validation pipeline: `npm run build` and `npm run lint`
 
-### Go-Live Checklist
+### Local-Only Checklist
 
-- [ ] Configure HTTPS and secure domain
-- [ ] Rotate and store secrets in a cloud secret manager
+- [ ] Keep `.env` local and out of source control
+- [ ] Run the backend and frontend through `npm run dev`
 - [ ] Run database backup and restore drills
-- [ ] Add centralized error monitoring and uptime alerts
-- [ ] Load test critical flows (login, upload, forum, admin moderation)
-- [ ] Configure legal and compliance pages (terms, privacy, data retention)
+- [ ] Test critical local flows before demos
+- [ ] Configure legal and compliance pages for local review copy
 
 ---
 

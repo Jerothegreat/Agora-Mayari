@@ -16,7 +16,6 @@
     "dev:web": "npm run dev -w frontend",
     "dev:api": "npm run dev -w backend",
     "build": "npm run build:api && npm run build:web",
-    "build:vercel": "npm --workspace frontend run build",
     "build:web": "npm run build -w frontend",
     "build:api": "npm run build -w backend",
     "lint": "npm run lint:web",

@@ -57,7 +57,7 @@ Bridging the gap between symptoms and care
 - **Frontend**: Next.js 16 + TypeScript + Tailwind
 - **Backend**: Node.js + Express + PostgreSQL
 - **AI**: Groq (LLaMA 3.3 70B) for fast inference, wrapped with auditability and safety overrides
-- **Infrastructure**: Vercel + Railway + Neon
+- **Runtime**: Local Next.js frontend + local Express backend + PostgreSQL
 
 ---
 
@@ -121,7 +121,7 @@ Bridging the gap between symptoms and care
 
 ### Technical Achievements
 - Zero critical bugs
-- Production-ready code
+- Local-demo-ready code
 - Comprehensive documentation
 - Scalable architecture
 
@@ -207,12 +207,12 @@ Bridging the gap between symptoms and care
 - ✅ Healthcare domain knowledge
 - ✅ UI/UX design excellence
 - ✅ Database architecture (PostgreSQL)
-- ✅ Cloud infrastructure (Vercel, Railway)
+- ✅ Local-first application runtime
 
 ### Built For
 **CODEKADA Hackathon 2026**
 - Rapid prototyping
-- Production-ready code
+- Local-demo-ready code
 - Comprehensive documentation
 - Scalable architecture
 
@@ -356,7 +356,7 @@ Bridging the gap between symptoms and care
 - **Frontend**: Next.js 16 (App Router), TypeScript, Tailwind CSS
 - **Backend**: Express.js, Drizzle ORM, PostgreSQL
 - **AI**: Groq API (LLaMA 3.3 70B)
-- **Hosting**: Vercel (frontend), Railway (backend), Neon (database)
+- **Runtime**: Local Next.js frontend, local Express backend, PostgreSQL database
 
 ### Security
 - JWT authentication (access + refresh tokens)
@@ -366,11 +366,10 @@ Bridging the gap between symptoms and care
 - HTTPS enforcement
 
 ### Scalability
-- Horizontal scaling ready
+- Local runtime separation between frontend and backend
 - Database connection pooling
-- CDN for static assets
 - Caching strategy
-- Load balancing ready
+- Platform hosting integration intentionally disabled
 
 ### Compliance
 - Data Privacy Act-aligned architecture

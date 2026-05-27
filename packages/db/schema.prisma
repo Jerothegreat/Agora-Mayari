@@ -26,3 +26,20 @@ model SymptomReport {
   symptomTags  Json
   aiResponse   Json
 }
+
+model VoiceSession {
+  id            String   @id @default(uuid())
+  channelName   String
+  agentId       String?
+  uid           String?
+  status        String   @default("active")
+  urgency       String?
+  specialty     String?
+  triageId      String?
+  appointmentId String?
+  transcript    Json     @default("[]")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("voice_sessions")
+}
