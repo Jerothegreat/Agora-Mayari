@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #0d9488; /* teal-600 */
+  --color-primary-dark: #0f766e; /* teal-700 */
+  --color-secondary: #2563eb; /* blue-600 */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-display: Georgia, "New York", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  --font-mono: "SFMono-Regular", "Menlo", "Consolas", monospace;
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
+  --border-soft: #e2e8f0;
+}
+
+.dark {
+  --background: #07131f;
+  --foreground: #e5eef8;
+  --surface: #0f1b2b;
+  --surface-muted: #152235;
+  --border-soft: #26364a;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(20, 184, 166, 0.08), transparent 32%),
+    linear-gradient(180deg, #f8fafc 0%, #fdfdfb 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top left, rgba(20, 184, 166, 0.12), transparent 30%),
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 28%),
+    linear-gradient(180deg, #07131f 0%, #0b1320 100%);
+}
+
+::selection {
+  background: rgba(13, 148, 136, 0.18);
+}
+
+/* Premium Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Gradients */
+.gradient-text {
+  background: linear-gradient(135deg, #0d9488 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.policy-pattern {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 12% 20%, rgba(20, 184, 166, 0.12), transparent 30%),
+    radial-gradient(circle at 88% 4%, rgba(245, 158, 11, 0.12), transparent 28%);
+  background-position: center top;
+  background-size: 28px 28px, 28px 28px, 680px 680px, 520px 520px;
+}
+
+.dark .policy-pattern {
+  background-image:
+    linear-gradient(rgba(226, 232, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 232, 240, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 12% 20%, rgba(20, 184, 166, 0.16), transparent 30%),
+    radial-gradient(circle at 88% 4%, rgba(245, 158, 11, 0.14), transparent 28%);
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.modal-scroll {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
+}
+
+.modal-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.7);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.85);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* App-wide dark theme compatibility for existing utility-heavy pages. */
+.dark .bg-white,
+.dark [class~="bg-white/40"],
+.dark [class~="bg-white/80"],
+.dark [class~="bg-white/90"] {
+  background-color: rgba(15, 27, 43, 0.88) !important;
+}
+
+.dark .bg-slate-50,
+.dark [class~="bg-slate-50/80"],
+.dark .bg-slate-100 {
+  background-color: #152235 !important;
+}
+
+.dark .bg-slate-200,
+.dark [class~="bg-slate-200/50"] {
+  background-color: #26364a !important;
+}
+
+.dark .border-slate-50,
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-white,
+.dark [class~="border-white/50"] {
+  border-color: #26364a !important;
+}
+
+.dark .text-slate-950,
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700 {
+  color: #e5eef8 !important;
+}
+
+.dark .text-slate-600,
+.dark .text-slate-500 {
+  color: #b7c4d6 !important;
+}
+
+.dark .text-slate-400 {
+  color: #8fa0b7 !important;
+}
+
+.dark .text-slate-300 {
+  color: #73839b !important;
+}
+
+.dark .shadow-slate-200,
+.dark .shadow-teal-100,
+.dark .shadow-blue-100,
+.dark .shadow-teal-200,
+.dark .shadow-teal-50 {
+  --tw-shadow-color: rgba(0, 0, 0, 0.28) !important;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #101c2c !important;
+  border-color: #314257 !important;
+  color: #e5eef8 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #7f8fa6 !important;
+}
+
+.dark option {
+  background-color: #101c2c;
+  color: #e5eef8;
+}
+
+.dark .bg-teal-50 {
+  background-color: rgba(20, 184, 166, 0.14) !important;
+}
+
+.dark .bg-blue-50,
+.dark [class~="bg-blue-100/20"] {
+  background-color: rgba(37, 99, 235, 0.14) !important;
+}
+
+.dark .bg-indigo-50,
+.dark [class~="from-indigo-50"] {
+  background-color: rgba(99, 102, 241, 0.14) !important;
+}
+
+.dark .bg-purple-50,
+.dark [class~="to-purple-50"] {
+  background-color: rgba(147, 51, 234, 0.14) !important;
+}
+
+.dark .bg-emerald-50,
+.dark .bg-green-50 {
+  background-color: rgba(16, 185, 129, 0.14) !important;
+}
+
+.dark .bg-amber-50,
+.dark .bg-yellow-50 {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+}
+
+.dark .bg-orange-50 {
+  background-color: rgba(249, 115, 22, 0.15) !important;
+}
+
+.dark .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.14) !important;
+}
+
+.dark .bg-red-100,
+.dark .bg-amber-100,
+.dark .bg-yellow-100,
+.dark .bg-emerald-100,
+.dark .bg-green-100,
+.dark .bg-blue-100,
+.dark .bg-indigo-100,
+.dark .bg-teal-100 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark table thead tr,
+.dark table tbody {
+  border-color: #26364a !important;
+}
+
+.dark .leaflet-container {
+  background: #0b1320;
+}
+
+.dark .leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.82) contrast(0.9);
+}
+
+.dark .leaflet-popup-content-wrapper,
+.dark .leaflet-popup-tip {
+  background: #101c2c;
+  color: #e5eef8;
+}
+
+.dark .modal-scroll {
+  scrollbar-color: rgba(148, 163, 184, 0.55) transparent;
+}
+
+.dark .modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.78);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.dark .modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.92);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
