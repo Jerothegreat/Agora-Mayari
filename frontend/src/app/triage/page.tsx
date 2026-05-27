@@ -49,10 +49,10 @@ export default function Home() {
   // Get or create session token
   const getSessionToken = () => {
     if (typeof window === 'undefined') return '';
-    let token = localStorage.getItem('haliya_session_token');
+    let token = localStorage.getItem('mayari_session_token');
     if (!token) {
       token = uuidv4();
-      localStorage.setItem('haliya_session_token', token);
+      localStorage.setItem('mayari_session_token', token);
     }
     return token;
   };
@@ -85,27 +85,27 @@ export default function Home() {
 
   const t = {
     English: {
-      title: "HALIYA",
+      title: "MAYARI",
       checker: "Checker",
       dashboard: "Health Dashboard",
       history: "History",
       signIn: "Sign In",
       heroTitle: "Your first screen for",
       heroHighlight: "better healthcare.",
-      heroDesc: "Haliya uses advanced AI to assess your symptoms and guide you to the right level of care—instantly and anonymously.",
+      heroDesc: "Mayari uses advanced AI to assess your symptoms and guide you to the right level of care—instantly and anonymously.",
       privacyTitle: "Privacy First",
       realtime: "Real-time Analysis",
       community: "Community Health"
     },
     Filipino: {
-      title: "HALIYA",
+      title: "MAYARI",
       checker: "Suriin",
       dashboard: "Dashboard ng Kalusugan",
       history: "Kasaysayan",
       signIn: "Mag-login",
       heroTitle: "Ang iyong unang hakbang para sa",
       heroHighlight: "mas mabuting kalusugan.",
-      heroDesc: "Ginagamit ng Haliya ang advanced AI para suriin ang iyong mga sintomas at gabayan ka sa tamang antas ng pangangalaga—agad-agad at anonimo.",
+      heroDesc: "Ginagamit ng Mayari ang advanced AI para suriin ang iyong mga sintomas at gabayan ka sa tamang antas ng pangangalaga—agad-agad at anonimo.",
       privacyTitle: "Protektado ang Datos",
       realtime: "Mabilis na Pagsusuri",
       community: "Kalusugan ng Bayan"
@@ -207,7 +207,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold">Community Health</h3>
                 <p className="text-slate-500 leading-relaxed">
-                  By using Haliya, you contribute to early outbreak detection in your region.
+                  By using Mayari, you contribute to early outbreak detection in your region.
                 </p>
               </div>
             </div>
@@ -220,10 +220,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2 opacity-50 grayscale">
             <HeartPulse size={20} />
-            <span className="font-bold tracking-tighter">HALIYA</span>
+            <span className="font-bold tracking-tighter">MAYARI</span>
           </div>
           <div className="text-sm text-slate-400 font-medium">
-            © 2026 Haliya Health. Built for CODEKADA Hackathon.
+            © 2026 Mayari Health.
           </div>
           <div className="flex gap-6 text-sm font-bold text-slate-400">
             <Link href="/privacy" className="hover:text-teal-600 transition-colors">Privacy</Link>

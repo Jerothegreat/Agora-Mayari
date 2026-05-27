@@ -96,10 +96,10 @@ export default function VoiceTriagePanel() {
       });
 
       await client.join(
-        session.session.app_id,
-        session.session.channel,
-        session.session.client.rtc_token,
-        session.session.client.rtc_uid,
+        process.env.NEXT_PUBLIC_AGORA_APP_ID!,
+        session.data.channelName,
+        session.data.token,
+        session.data.uid,
       );
       await client.publish([localTrack]);
 

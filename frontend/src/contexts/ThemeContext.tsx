@@ -10,7 +10,7 @@ type ThemeContextValue = {
   setTheme: (theme: Theme) => void;
 };
 
-const STORAGE_KEY = 'haliya_theme';
+const STORAGE_KEY = 'mayari_theme';
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 const getPreferredTheme = (): Theme => {

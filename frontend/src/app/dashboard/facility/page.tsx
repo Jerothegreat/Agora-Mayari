@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, X, RefreshCw, Search, Eye, Activity, Shield, Radio } from 'lucide-react';
+import { Check, X, RefreshCw, Search, Eye, Activity, Shield, Radio, TrendingUp, PhilippinePeso, Users, CalendarCheck } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { API_URL, FeedbackMetrics, getFacilityProfile } from '@/lib/api';
 import AppHeader from '@/components/AppHeader';
@@ -158,6 +158,14 @@ export default function FacilityDashboard() {
   const pending = appointments.filter(a => a.status === 'pending').length;
   const confirmed = appointments.filter(a => a.status === 'confirmed').length;
   const avgScore = appointments.length > 0 ? (appointments.reduce((sum, appointment) => sum + (appointment.triage_score || 0), 0) / appointments.length).toFixed(1) : '—';
+
+  // Sales pipeline metrics
+  const totalLeads = appointments.length;
+  const conversionRate = totalLeads > 0 ? Math.round((confirmed / totalLeads) * 100) : 0;
+  const revenueRecovered = confirmed * 500;
+  const hotLeads = appointments.filter(a => a.status === 'confirmed' && (a.triage_score ?? 0) >= 4 && (a.triage_score ?? 0) <= 8).length;
+  const warmLeads = appointments.filter(a => a.status === 'pending' && (a.triage_score ?? 0) <= 3).length;
+  const coldLeads = appointments.filter(a => (a.triage_score ?? 0) >= 9).length;
   const lastSyncLabel = lastQueueSync
     ? new Intl.DateTimeFormat('en-PH', { hour: 'numeric', minute: '2-digit', second: '2-digit' }).format(lastQueueSync)
     : 'Sync pending';
@@ -172,8 +180,9 @@ export default function FacilityDashboard() {
       <div className="mx-auto max-w-7xl p-6 md:p-12">
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
           <div>
-            <h1 className="text-4xl font-black text-slate-900 tracking-tight">{user?.name}</h1>
-            <p className="text-slate-500 font-medium">Healthcare Facility Dashboard • Central Management</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-teal-600 mb-1">Mayari Sales Dashboard</p>
+            <h1 className="text-4xl font-black text-slate-900 tracking-tight">Tonight&apos;s Patient Pipeline</h1>
+            <p className="text-slate-500 font-medium">{user?.name} • Every inquiry is a sales opportunity</p>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/dashboard/facility/profile" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-600 hover:bg-slate-50">
@@ -195,16 +204,59 @@ export default function FacilityDashboard() {
 
         {queueError ? (
           <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 text-sm font-semibold text-amber-700">
-            {queueError} The last visible queue remains on screen while Haliya retries automatically.
+            {queueError} The last visible queue remains on screen while Mayari retries automatically.
           </div>
         ) : null}
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-          <DashboardMetricCard label="Total Queue" value={appointments.length} valueClassName="text-3xl" cardClassName="p-5" />
-          <DashboardMetricCard label="Pending Review" value={pending} accentClassName="text-amber-500" valueClassName="text-3xl text-amber-600" cardClassName="p-5" />
-          <DashboardMetricCard label="Confirmed" value={confirmed} accentClassName="text-emerald-500" valueClassName="text-3xl text-emerald-600" cardClassName="p-5" />
-          <DashboardMetricCard label="Avg Risk" value={avgScore} suffix="/10" valueClassName="text-3xl" cardClassName="p-5" />
+        {/* Sales KPI Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+          <div className="rounded-[1.5rem] border border-slate-100 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="rounded-xl bg-blue-50 p-2 text-blue-600"><Users size={16} /></div>
+              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Leads Captured</p>
+            </div>
+            <p className="text-3xl font-black text-slate-900">{totalLeads}</p>
+            <p className="text-xs font-medium text-slate-400 mt-1">Inquiries / Leads</p>
+          </div>
+          <div className="rounded-[1.5rem] border border-emerald-100 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="rounded-xl bg-emerald-50 p-2 text-emerald-600"><CalendarCheck size={16} /></div>
+              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Appointments Booked</p>
+            </div>
+            <p className="text-3xl font-black text-emerald-600">{confirmed}</p>
+            <p className="text-xs font-medium text-slate-400 mt-1">Conversions</p>
+          </div>
+          <div className="rounded-[1.5rem] border border-teal-100 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="rounded-xl bg-teal-50 p-2 text-teal-600"><TrendingUp size={16} /></div>
+              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Conversion Rate</p>
+            </div>
+            <p className="text-3xl font-black text-teal-600">{conversionRate}%</p>
+            <p className="text-xs font-medium text-slate-400 mt-1">Leads closed</p>
+          </div>
+          <div className="rounded-[1.5rem] border border-amber-100 bg-white p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="rounded-xl bg-amber-50 p-2 text-amber-600"><PhilippinePeso size={16} /></div>
+              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Revenue Recovered</p>
+            </div>
+            <p className="text-3xl font-black text-amber-600">₱{revenueRecovered.toLocaleString('en-PH')}</p>
+            <p className="text-xs font-medium text-slate-400 mt-1">@ ₱500 per booking</p>
+          </div>
+        </div>
+
+        {/* Pipeline Summary */}
+        <div className="mb-8 flex flex-wrap items-center gap-3 rounded-[1.5rem] border border-slate-100 bg-white px-6 py-4 shadow-sm">
+          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mr-2">Pipeline</p>
+          <span className="inline-flex items-center gap-2 rounded-full bg-red-50 border border-red-100 px-4 py-2 text-sm font-black text-red-600">
+            🔴 Hot — {hotLeads} closed {hotLeads === 1 ? 'deal' : 'deals'}
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full bg-amber-50 border border-amber-100 px-4 py-2 text-sm font-black text-amber-600">
+            🟡 Warm — {warmLeads} open {warmLeads === 1 ? 'lead' : 'leads'}
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full bg-slate-50 border border-slate-200 px-4 py-2 text-sm font-black text-slate-500">
+            ⚪ Cold — {coldLeads} ER {coldLeads === 1 ? 'redirect' : 'redirects'}
+          </span>
+          <p className="ml-auto text-[10px] font-semibold text-slate-400 hidden sm:block">Hot = medium urgency booked • Warm = low urgency pending • Cold = lost to ER</p>
         </div>
 
         {/* Clinician Feedback Intelligence */}
@@ -215,7 +267,7 @@ export default function FacilityDashboard() {
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400">Clinician Feedback Dashboard</p>
                 <h2 className="mt-1 text-2xl font-black text-slate-900">Live AI validation loop</h2>
                 <p className="mt-2 max-w-2xl text-sm font-medium leading-relaxed text-slate-500">
-                  Provider corrections become an audit trail and confusion matrix, so Haliya can show measurable trust instead of just claiming accuracy.
+                  Provider corrections become an audit trail and confusion matrix, so Mayari can show measurable trust instead of just claiming accuracy.
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-3 text-center">
@@ -256,22 +308,25 @@ export default function FacilityDashboard() {
 
         {/* Filters + Search */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-          <DashboardTabs tabs={['pending', 'confirmed', 'cancelled', 'all'] as const} activeTab={activeTab} onChange={setActiveTab} activeClassName="text-blue-600" />
+          <div className="flex items-center gap-3">
+            <DashboardTabs tabs={['pending', 'confirmed', 'cancelled', 'all'] as const} activeTab={activeTab} onChange={setActiveTab} activeClassName="text-blue-600" />
+            <span className="hidden sm:block text-[10px] font-black text-slate-300 uppercase tracking-widest">pending = open leads • confirmed = conversions</span>
+          </div>
           <div className="relative w-full sm:w-auto">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-            <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search patient or symptom..." className="w-full sm:w-72 bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-700 focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm" />
+            <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search lead or inquiry..." className="w-full sm:w-72 bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-700 focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm" />
           </div>
         </div>
 
-        {/* Queue Table */}
+        {/* Pipeline Table */}
         <div className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead>
                 <tr className="text-slate-400 text-xs font-bold uppercase tracking-wider border-b border-slate-100">
-                  <th className="px-6 py-5">Patient</th>
-                  <th className="px-6 py-5">Symptoms</th>
-                  <th className="px-6 py-5">Risk</th>
+                  <th className="px-6 py-5">Lead / Patient</th>
+                  <th className="px-6 py-5">Inquiry / Symptoms</th>
+                  <th className="px-6 py-5">Priority Level</th>
                   <th className="px-6 py-5">Date</th>
                   <th className="px-6 py-5 text-right">Actions</th>
                 </tr>

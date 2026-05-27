@@ -32,7 +32,7 @@ export default function HistoryPage() {
 
   useEffect(() => {
     const fetchHistory = async () => {
-      const token = localStorage.getItem('haliya_session_token');
+      const token = localStorage.getItem('mayari_session_token');
       if (!token) {
         setLoading(false);
         return;

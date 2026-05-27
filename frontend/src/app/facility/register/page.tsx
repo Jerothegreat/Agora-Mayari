@@ -77,7 +77,7 @@ export default function FacilityRegisterPage() {
             <Building2 size={32} />
           </div>
           <h1 className="text-3xl font-black text-slate-900 tracking-tight">Facility Registration</h1>
-          <p className="text-slate-500 font-medium">Partner with Haliya to manage triage and appointments.</p>
+          <p className="text-slate-500 font-medium">Partner with Mayari to manage triage and appointments.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useMutation } from "@tanstack/react-query";
 import type { IAgoraRTCClient, IMicrophoneAudioTrack } from "agora-rtc-sdk-ng";
-import { Bot, Loader2, Mic, PhoneOff, RotateCcw } from "lucide-react";
+import { Bot, Loader2, Mic, PhoneOff, RotateCcw, TrendingUp } from "lucide-react";
 import BookingConfirmationCard from "@/components/BookingConfirmationCard";
 import UrgencyBadge from "@/components/UrgencyBadge";
 import {
@@ -170,16 +170,21 @@ export default function VoiceSession() {
     <div className="mx-auto w-full max-w-2xl rounded-[2rem] border border-teal-100 bg-white p-6 shadow-xl shadow-teal-100/40">
       {status === "idle" ? (
         <div className="flex flex-col items-center gap-5 py-6 text-center">
-          <div className="rounded-2xl bg-teal-600 p-3 text-white">
-            <Bot size={26} />
+          <div className="flex items-center gap-3">
+            <div className="rounded-2xl bg-teal-600 p-3 text-white">
+              <Bot size={26} />
+            </div>
+            <div className="rounded-2xl bg-emerald-50 px-3 py-1.5 text-xs font-black uppercase tracking-widest text-emerald-700 border border-emerald-100">
+              Always On
+            </div>
           </div>
           <div className="space-y-2">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-teal-600">
-              Mayari Voice Intake
+              Your Clinic&apos;s Always-On Sales Agent
             </p>
-            <h2 className="text-2xl font-black text-slate-900">Magsimula ng voice intake</h2>
+            <h2 className="text-2xl font-black text-slate-900">Never miss a patient booking again.</h2>
             <p className="mx-auto max-w-md text-sm font-medium leading-relaxed text-slate-500">
-              Kausapin si Mayari para sa symptom intake at clinic booking guidance sa Filipino o English.
+              Kausapin si Mayari — mag-qualify ng leads, mag-handle ng objections, at mag-close ng booking sa Filipino o English. Kahit alas-nuwebe ng gabi.
             </p>
           </div>
           <button
@@ -190,9 +195,10 @@ export default function VoiceSession() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-300 opacity-50" />
             <span className="relative inline-flex items-center gap-3 text-base font-black">
               <Mic size={22} />
-              Kausapin si Mayari
+              Start Intake Call
             </span>
           </button>
+          <p className="text-xs font-medium text-slate-400">Every call is a sales opportunity. Mayari qualifies and closes.</p>
         </div>
       ) : null}
 
@@ -273,9 +279,14 @@ export default function VoiceSession() {
       ) : null}
 
       {startSessionMutation.isError ? (
-        <p className="mt-4 text-sm font-semibold text-red-600">
-          Hindi nagsimula ang voice session.
-        </p>
+        <div className="mt-4 rounded-2xl border border-red-100 bg-red-50 px-4 py-3">
+          <p className="text-sm font-black text-red-700">Voice session failed to start.</p>
+          <p className="mt-1 text-xs font-medium text-red-500">
+            {startSessionMutation.error instanceof Error
+              ? startSessionMutation.error.message
+              : "Hindi nagsimula ang voice session."}
+          </p>
+        </div>
       ) : null}
       {endSessionMutation.isError ? (
         <p className="mt-4 text-sm font-semibold text-red-600">

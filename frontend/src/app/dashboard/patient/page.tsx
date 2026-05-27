@@ -145,7 +145,7 @@ function PatientDashboardContent() {
         console.error(err);
       }
       // Fetch AI health summary
-      const sessionToken = localStorage.getItem('haliya_session_token');
+      const sessionToken = localStorage.getItem('mayari_session_token');
       if (sessionToken) {
         try { const hs = await getHealthSummary(sessionToken); setHealthSummary(hs); } catch {}
       }
@@ -301,7 +301,7 @@ function PatientDashboardContent() {
               next_steps: assessment.next_steps || [],
             },
             routing_recommendation: {
-              source: 'haliya_facility_load_balancer',
+              source: 'mayari_facility_load_balancer',
               preselected_facility_name: searchParams.get('facility_name') || null,
             },
           },

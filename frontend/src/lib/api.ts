@@ -250,17 +250,23 @@ export async function getTriage(data: TriageRequest): Promise<TriageResponse> {
   return readJson(response, 'Failed to get triage result');
 }
 
-export async function startVoiceSession(): Promise<VoiceSessionResponse> {
-  const response = await fetch(`${API_URL}/voice-sessions/start`, {
+export async function startVoiceSession(): Promise<{ success: true; data: StartVoiceSessionResponse }> {
+  const response = await fetch(`${API_URL}/agora/session/start`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      enable_string_uid: true,
-      idle_timeout: 120,
-      token_expiration_seconds: 3600,
-    }),
   });
   return readJson(response, 'Failed to start voice session');
+}
+
+export async function endVoiceSession(
+  data: EndVoiceSessionRequest,
+): Promise<{ success: true; data: EndVoiceSessionResponse }> {
+  const response = await fetch(`${API_URL}/agora/session/end`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return readJson(response, 'Failed to end voice session');
 }
 
 export async function getDashboardSummary(): Promise<DashboardSummary> {

@@ -1,7 +1,7 @@
-# 🏥 HALIYA - Pitch Deck
+# 🏥 MAYARI - Pitch Deck
 
 ## Slide 1: Title
-**HALIYA**
+**MAYARI**
 *AI-Powered Health Triage for the Philippines*
 
 Bridging the gap between symptoms and care
@@ -23,7 +23,7 @@ Bridging the gap between symptoms and care
 
 ## Slide 3: The Solution
 
-### Haliya: Intelligent Health Triage Platform
+### Mayari: Intelligent Health Triage Platform
 
 **For Patients:**
 - Instant AI symptom assessment (4.2s average)
@@ -341,12 +341,12 @@ Bridging the gap between symptoms and care
 
 ### Let's Build the Future of Healthcare Together
 
-**Website**: haliya.health (coming soon)
-**Email**: team@haliya.health
+**Website**: mayari.health (coming soon)
+**Email**: team@mayari.health
 **Demo**: [Live Demo Link]
 **GitHub**: [Repository Link]
 
-**Built with ❤️ for CODEKADA Hackathon 2026**
+**Mayari — Sumasagot kung hindi kaya ng clinic mo.**
 
 ---
 
@@ -381,7 +381,7 @@ Bridging the gap between symptoms and care
 ---
 
 <div align="center">
-  <strong>🏥 HALIYA - Empowering Filipino Health Through AI</strong>
+  <strong>🏥 MAYARI - Empowering Filipino Health Through AI</strong>
   
   *"The future of health triage is here."*
 </div>

@@ -1,4 +1,4 @@
-# Haliya System Flow Diagrams
+# Mayari System Flow Diagrams
 
 Use Mermaid Live Editor to convert these diagrams into an image:
 

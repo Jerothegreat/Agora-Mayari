@@ -69,7 +69,7 @@ export default function SignupPage() {
             <HeartPulse size={32} />
           </div>
           <h1 className="text-3xl font-black text-slate-900 tracking-tight">Create Account</h1>
-          <p className="text-slate-500 font-medium">Join Haliya to track your health and book care.</p>
+          <p className="text-slate-500 font-medium">Join Mayari to track your health and book care.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">

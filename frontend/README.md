@@ -1,33 +1,27 @@
-# 🎨 Haliya Frontend
+# Mayari Frontend
 
-Modern, responsive Next.js application for the Haliya health triage platform.
+Next.js application for the Mayari AI voice patient intake and booking platform.
 
-## 🚀 Quick Start
+Mayari is a real-time AI voice patient intake and booking agent for Philippine medical clinics.
+Sumasagot kung hindi kaya ng clinic mo.
+
+## Quick Start
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
-
-# Build locally
 npm run build
-
-# Start the local built server
 npm start
-
-# Run linter
 npm run lint
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Landing page
-│   ├── triage/            # AI symptom checker
+│   ├── triage/            # AI symptom checker + voice intake
 │   ├── dashboard/         # Patient & facility dashboards
 │   ├── auth/              # Authentication pages
 │   ├── public-health/     # Community health dashboard
@@ -36,6 +30,7 @@ src/
 │
 ├── components/            # Reusable React components
 │   ├── AppHeader.tsx      # Main navigation header
+│   ├── VoiceSession.tsx   # Agora voice intake widget
 │   ├── SymptomForm.tsx    # Triage input form
 │   ├── TriageResult.tsx   # AI assessment display
 │   ├── LanguageToggle.tsx # EN/FIL switcher
@@ -43,51 +38,53 @@ src/
 │
 ├── contexts/              # React Context providers
 │   ├── AuthContext.tsx    # User authentication state
-│   └── LanguageContext.tsx # i18n language state
+│   ├── LanguageContext.tsx # i18n language state
+│   └── ThemeContext.tsx   # Dark/light theme state
 │
 ├── lib/                   # Utilities and helpers
 │   ├── api.ts            # API client functions
 │   ├── navigation.ts     # Navigation configuration
 │   └── utils.ts          # Helper functions
 │
-└── styles/
-    └── globals.css       # Global styles and Tailwind imports
+└── stores/
+    └── voiceSessionStore.ts  # Zustand store for voice session state
 ```
 
-## 🎯 Key Features
+## Key Features
+
+### Voice Intake (Mayari)
+- Real-time voice conversation via Agora Conversational AI
+- Bilingual ASR: Filipino (`fil-PH`) and English
+- Azure TTS with Philippine English voice (`en-PH-RosaNeural`)
+- Live transcript display during session
+- Post-session triage and automatic appointment booking
 
 ### Bilingual Support
 - Full English and Filipino translations
-- Persistent language preference (localStorage)
+- Persistent language preference (localStorage key: `mayari_language`)
 - Seamless switching without page reload
 
 ### Authentication
 - JWT-based auth with refresh tokens
 - Protected routes with middleware
-- Persistent sessions
+- Persistent sessions (localStorage key: `mayari_auth`)
 
 ### Responsive Design
 - Mobile-first approach
 - Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
 - Touch-friendly interactions
 
-### Performance
-- Code splitting with Next.js App Router
-- Lazy loading for images and components
-- Optimized bundle size
-- Server-side rendering for SEO
+## Tech Stack
 
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 16.2 (App Router)
+- **Framework**: Next.js (App Router)
 - **Language**: TypeScript 5.0
-- **Styling**: Tailwind CSS 3.4
-- **Animations**: Framer Motion 11.x
+- **Styling**: Tailwind CSS
+- **State**: Zustand (voice session), React Context (auth, language, theme)
+- **Voice**: Agora RTC SDK + Agora Conversational AI
 - **Icons**: Lucide React
 - **HTTP**: Native Fetch API
-- **State**: React Context API
 
-## 🎨 Design System
+## Design System
 
 ### Colors
 ```css
@@ -99,33 +96,23 @@ Info: Blue (#3b82f6)
 ```
 
 ### Typography
-- **Font**: Geist Sans (Variable)
+- **Font**: System sans-serif stack
 - **Headings**: font-black (900 weight)
 - **Body**: font-medium (500 weight)
-- **Small**: font-bold (700 weight)
 
-### Spacing
-- Base unit: 4px (0.25rem)
-- Common: 4, 8, 12, 16, 20, 24, 32, 48, 64px
-
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
+NEXT_PUBLIC_AGORA_APP_ID=your_agora_app_id
 ```
 
-### Tailwind Config
-Custom configuration in `tailwind.config.js`:
-- Extended color palette
-- Custom border radius
-- Animation utilities
-
-## 📱 Pages Overview
+## Pages Overview
 
 ### Public Pages
 - `/` - Landing page with hero and features
-- `/triage` - Anonymous symptom checker
+- `/triage` - Voice intake + symptom checker
 - `/public-health` - Community health dashboard
 - `/auth/login` - User login
 - `/auth/signup` - User registration
@@ -140,107 +127,19 @@ Custom configuration in `tailwind.config.js`:
 - `/dashboard/facility` - Facility queue management
 - `/dashboard/facility/profile` - Edit facility profile
 
-## 🎭 Components
-
-### AppHeader
-Main navigation with logo, links, language toggle, and auth buttons.
-
-### SymptomForm
-Multi-step form for symptom input with validation and bilingual support.
-
-### TriageResult
-Displays AI assessment with urgency level, recommendations, and booking CTA.
-
-### LanguageToggle
-Button to switch between English and Filipino with globe icon.
-
-## 🌐 API Integration
-
-All API calls are centralized in `src/lib/api.ts`:
-
-```typescript
-// Example usage
-import { getTriage, getPatientProfile } from '@/lib/api';
-
-const result = await getTriage({
-  symptoms: 'fever, cough',
-  duration: '3 days',
-  severity: 'moderate',
-  language: 'English'
-});
-```
-
-## 🔐 Authentication Flow
-
-1. User logs in → receives access + refresh tokens
-2. Tokens stored in localStorage
-3. Access token sent in Authorization header
-4. On 401 error → attempt refresh
-5. On refresh failure → redirect to login
-
-## 🎨 Styling Guidelines
-
-### Component Classes
-```tsx
-// Card
-className="rounded-2xl bg-white p-6 shadow-sm border border-slate-100"
-
-// Button Primary
-className="px-6 py-3 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700"
-
-// Button Secondary
-className="px-6 py-3 bg-white border-2 border-slate-200 text-slate-700 rounded-xl font-bold"
-
-// Input
-className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-teal-500"
-```
-
 ## Local Build
 
-The frontend is intended to run locally with the backend at `http://localhost:3000/api`.
+The frontend runs locally with the backend at `http://localhost:3000/api`.
 
 ```bash
 npm run build
 npm start
 ```
 
-## 📊 Performance Tips
-
-1. Prefer optimized image delivery where practical
-2. Lazy load heavy components with `dynamic()`
-3. Minimize client-side JavaScript
-4. Use server components where possible
-5. Optimize fonts with `next/font`
-
-## 🐛 Debugging
+## Debugging
 
 ```bash
-# Check for TypeScript errors
 npm run type-check
-
-# Run linter
 npm run lint
-
-# Build to catch local build issues
 npm run build
 ```
-
-## 📝 Code Style
-
-- Use functional components with hooks
-- Prefer `const` over `let`
-- Use TypeScript strict mode
-- Follow ESLint rules
-- Use Prettier for formatting
-
-## 🎯 Best Practices
-
-1. **Component Organization**: One component per file
-2. **Type Safety**: Define interfaces for all props
-3. **Error Handling**: Use try-catch with user-friendly messages
-4. **Loading States**: Show spinners during async operations
-5. **Accessibility**: Use semantic HTML and ARIA labels
-
----
-
-Built with ❤️ for CODEKADA Hackathon 2026

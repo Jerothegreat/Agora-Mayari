@@ -18,7 +18,7 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-const STORAGE_KEY = 'haliya_auth';
+const STORAGE_KEY = 'mayari_auth';
 
 const readStoredUser = (): AuthUser | null => {
   if (typeof window === 'undefined') return null;

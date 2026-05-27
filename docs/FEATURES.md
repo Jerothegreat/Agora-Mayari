@@ -1,4 +1,4 @@
-# ✨ Haliya Features Showcase
+# ✨ Mayari Features Showcase
 
 ## 🎯 Core Features
 
@@ -285,7 +285,7 @@
 *"I have a fever and don't know if I should go to the ER"*
 
 **Journey:**
-1. Visits Haliya triage page
+1. Visits Mayari triage page
 2. Describes symptoms in Filipino
 3. Gets AI assessment: Moderate risk (5/10)
 4. Receives recommendation: Visit clinic within 24 hours
@@ -433,5 +433,5 @@ Action: DOH issues advisory, facilities prepare
 ---
 
 <div align="center">
-  <strong>🏥 Haliya - Transforming Healthcare Access in the Philippines</strong>
+  <strong>🏥 Mayari - Transforming Healthcare Access in the Philippines</strong>
 </div>

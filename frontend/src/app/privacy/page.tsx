@@ -26,7 +26,7 @@ const policySections = [
       icon: 'bg-teal-50 text-teal-700 ring-teal-100',
       tag: 'bg-teal-100 text-teal-700',
     },
-    body: 'Haliya collects account information, patient or facility profile details, symptom assessments, appointment records, device/session identifiers, and technical security logs needed to operate the service. Health-related entries may be sensitive personal information under the Philippine Data Privacy Act of 2012.',
+    body: 'Mayari collects account information, patient or facility profile details, symptom assessments, appointment records, device/session identifiers, and technical security logs needed to operate the service. Health-related entries may be sensitive personal information under the Philippine Data Privacy Act of 2012.',
   },
   {
     title: 'How We Use Information',
@@ -38,7 +38,7 @@ const policySections = [
       icon: 'bg-blue-50 text-blue-700 ring-blue-100',
       tag: 'bg-blue-100 text-blue-700',
     },
-    body: 'We use information to provide AI-assisted triage, appointment routing, patient and facility dashboards, safety auditing, fraud prevention, service reliability, and public-health intelligence. Haliya does not sell personal health information.',
+    body: 'We use information to provide AI-assisted triage, appointment routing, patient and facility dashboards, safety auditing, fraud prevention, service reliability, and public-health intelligence. Mayari does not sell personal health information.',
   },
   {
     title: 'Anonymization and Public Health Use',
@@ -50,7 +50,7 @@ const policySections = [
       icon: 'bg-emerald-50 text-emerald-700 ring-emerald-100',
       tag: 'bg-emerald-100 text-emerald-700',
     },
-    body: 'Before data is used for trend dashboards, outbreak signals, research summaries, or public-health reporting, Haliya minimizes and aggregates records and may anonymize or de-identify them so the output does not reasonably identify a patient. Aggregated statistics may be retained for institutional reporting and community health monitoring.',
+    body: 'Before data is used for trend dashboards, outbreak signals, research summaries, or public-health reporting, Mayari minimizes and aggregates records and may anonymize or de-identify them so the output does not reasonably identify a patient. Aggregated statistics may be retained for institutional reporting and community health monitoring.',
   },
   {
     title: 'Security and Access Controls',
@@ -143,7 +143,7 @@ export default function PrivacyPage() {
                   Official governance reference for safe, privacy-first health intelligence across patient, facility, and public-health workflows.
                 </p>
                 <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-600">
-                  Haliya is designed for patients, health facilities, and public-health teams in the Philippines. This policy explains how we collect, use, protect, anonymize, retain, and delete information handled through the platform.
+                  Mayari is designed for patients, health facilities, and public-health teams in the Philippines. This policy explains how we collect, use, protect, anonymize, retain, and delete information handled through the platform.
                 </p>
               </div>
               <div className="space-y-4 lg:pt-2">
@@ -158,7 +158,7 @@ export default function PrivacyPage() {
                 <div className="rounded-2xl border border-amber-100 bg-amber-50/80 p-5 shadow-sm dark:border-amber-500/30 dark:bg-slate-900/80">
                   <p className="font-display text-[11px] font-black uppercase tracking-normal text-amber-700">Privacy Office</p>
                   <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-600">
-                    Privacy requests may be sent to the Haliya privacy team through the official support channel provided by the institution operating this local instance.
+                    Privacy requests may be sent to the Mayari privacy team through the official support channel provided by the institution operating this local instance.
                   </p>
                 </div>
               </div>

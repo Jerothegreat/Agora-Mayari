@@ -26,7 +26,7 @@ const terms = [
       icon: 'bg-teal-50 text-teal-700 ring-teal-100',
       tag: 'bg-teal-100 text-teal-700',
     },
-    body: 'Haliya provides AI-assisted triage and care-navigation support. It is not a physician, hospital, emergency service, diagnosis, prescription, or substitute for professional medical judgment.',
+    body: 'Mayari provides AI-assisted triage and care-navigation support. It is not a physician, hospital, emergency service, diagnosis, prescription, or substitute for professional medical judgment.',
   },
   {
     title: 'Emergency Use',
@@ -38,7 +38,7 @@ const terms = [
       icon: 'bg-amber-50 text-amber-700 ring-amber-100',
       tag: 'bg-amber-100 text-amber-700',
     },
-    body: 'If you may be experiencing a medical emergency, call local emergency services or proceed to the nearest emergency room. Do not wait for Haliya, a facility response, or an appointment confirmation.',
+    body: 'If you may be experiencing a medical emergency, call local emergency services or proceed to the nearest emergency room. Do not wait for Mayari, a facility response, or an appointment confirmation.',
   },
   {
     title: 'User Responsibilities',
@@ -74,7 +74,7 @@ const terms = [
       icon: 'bg-cyan-50 text-cyan-700 ring-cyan-100',
       tag: 'bg-cyan-100 text-cyan-700',
     },
-    body: 'By using Haliya, you consent to processing needed to operate the service. Account-linked data may be deleted from profile settings. Aggregated or anonymized public-health indicators may remain because they no longer identify a person.',
+    body: 'By using Mayari, you consent to processing needed to operate the service. Account-linked data may be deleted from profile settings. Aggregated or anonymized public-health indicators may remain because they no longer identify a person.',
   },
   {
     title: 'Service Changes and Limits',
@@ -86,7 +86,7 @@ const terms = [
       icon: 'bg-blue-50 text-blue-700 ring-blue-100',
       tag: 'bg-blue-100 text-blue-700',
     },
-    body: 'Haliya may update models, workflows, policies, or features to improve safety and reliability. We aim for high availability, but the service may be unavailable during maintenance, connectivity issues, or third-party outages.',
+    body: 'Mayari may update models, workflows, policies, or features to improve safety and reliability. We aim for high availability, but the service may be unavailable during maintenance, connectivity issues, or third-party outages.',
   },
 ];
 
@@ -95,7 +95,7 @@ const conditions = [
     tag: 'Clinical Caution',
     tagClass: 'bg-amber-100 text-amber-700',
     cardClass: 'border-amber-100 bg-amber-50/80',
-    body: 'AI outputs may be incomplete or incorrect when information is missing, symptoms are ambiguous, systems are unavailable, or clinical circumstances change. Haliya includes safety rules and audit signals, but final clinical decisions belong to qualified professionals.',
+    body: 'AI outputs may be incomplete or incorrect when information is missing, symptoms are ambiguous, systems are unavailable, or clinical circumstances change. Mayari includes safety rules and audit signals, but final clinical decisions belong to qualified professionals.',
   },
   {
     tag: 'Access Integrity',
@@ -125,7 +125,7 @@ export default function TermsPage() {
                   Official operating agreement for responsible AI triage, facility workflows, and public-health intelligence use.
                 </p>
                 <p className="mt-5 max-w-3xl text-base font-medium leading-relaxed text-slate-600">
-                  These terms govern access to Haliya by patients, facility users, administrators, and public-health stakeholders. By registering, logging in, or using the platform, you agree to these terms and the Data Privacy Policy.
+                  These terms govern access to Mayari by patients, facility users, administrators, and public-health stakeholders. By registering, logging in, or using the platform, you agree to these terms and the Data Privacy Policy.
                 </p>
               </div>
               <div className="space-y-4 lg:pt-2">
@@ -140,7 +140,7 @@ export default function TermsPage() {
                 <div className="rounded-2xl border border-amber-100 bg-amber-50/80 p-5 shadow-sm dark:border-amber-500/30 dark:bg-slate-900/80">
                   <p className="font-display text-[11px] font-black uppercase tracking-normal text-amber-700">Important Notice</p>
                   <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-600">
-                    Haliya supports care navigation and institutional monitoring, but it does not replace licensed clinical judgment or emergency services.
+                    Mayari supports care navigation and institutional monitoring, but it does not replace licensed clinical judgment or emergency services.
                   </p>
                 </div>
               </div>

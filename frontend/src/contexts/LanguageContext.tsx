@@ -13,7 +13,7 @@ type LanguageContextType = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'haliya_language';
+const STORAGE_KEY = 'mayari_language';
 const isLanguage = (value: string | null): value is Language => value === 'English' || value === 'Filipino';
 
 const readStoredLanguage = (): Language => {
