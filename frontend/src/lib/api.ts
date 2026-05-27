@@ -9,6 +9,26 @@ export interface TriageRequest {
   region?: string;
 }
 
+export interface VoiceSessionResponse {
+  success: boolean;
+  status: string;
+  session: {
+    session_id: string;
+    app_id: string;
+    channel: string;
+    client: {
+      rtc_uid: string;
+      rtc_token: string;
+    };
+    agent: {
+      rtc_uid: string;
+      agent_id: string;
+      create_ts: number;
+      status: string;
+    };
+  };
+}
+
 export interface DifferentialDiagnosis {
   condition: string;
   likelihood: 'High' | 'Moderate' | 'Low';
@@ -230,23 +250,17 @@ export async function getTriage(data: TriageRequest): Promise<TriageResponse> {
   return readJson(response, 'Failed to get triage result');
 }
 
-export async function startVoiceSession(): Promise<{ success: true; data: StartVoiceSessionResponse }> {
-  const response = await fetch(`${API_URL}/agora/session/start`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+export async function startVoiceSession(): Promise<VoiceSessionResponse> {
+  const response = await fetch(`${API_URL}/voice-sessions/start`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      enable_string_uid: true,
+      idle_timeout: 120,
+      token_expiration_seconds: 3600,
+    }),
   });
-  return readJson(response, "Failed to start voice session");
-}
-
-export async function endVoiceSession(
-  data: EndVoiceSessionRequest,
-): Promise<{ success: true; data: EndVoiceSessionResponse }> {
-  const response = await fetch(`${API_URL}/agora/session/end`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return readJson(response, "Failed to end voice session");
+  return readJson(response, 'Failed to start voice session');
 }
 
 export async function getDashboardSummary(): Promise<DashboardSummary> {

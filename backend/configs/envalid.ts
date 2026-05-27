@@ -24,6 +24,7 @@ try {
     AGORA_CUSTOMER_SECRET: str({ default: "" }),
     AZURE_TTS_KEY: str({ default: "" }),
     AZURE_TTS_REGION: str({ default: "" }),
+    AGORA_PIPELINE_ID: str({ default: "" }),
     WEB_ORIGINS: str({
       default: "http://localhost:5173,http://localhost:3000",
     }),

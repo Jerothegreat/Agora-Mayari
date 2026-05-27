@@ -1,5 +1,6 @@
 import express from "express";
 import { getTriage, getHistory, getHealthSummary } from "../controllers/triageController.js";
+import { startVoiceSession } from "../controllers/voiceSessionController.js";
 import { 
   getDashboardSummary, 
   getRegionalStats, 
@@ -13,6 +14,7 @@ import {
 const router = express.Router();
 
 router.post("/triage", getTriage);
+router.post("/voice-sessions/start", startVoiceSession);
 router.get("/triage/history", getHistory);
 router.get("/triage/health-summary", getHealthSummary);
 router.get("/dashboard/summary", getDashboardSummary);

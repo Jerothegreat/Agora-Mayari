@@ -12,6 +12,7 @@ import Link from 'next/link';
 import AppHeader from '@/components/AppHeader';
 import { mainNavItems } from '@/lib/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
+import VoiceTriagePanel from '@/components/VoiceTriagePanel';
 
 const parseDurationToDays = (input?: string): number | null => {
   if (!input) return null;
@@ -153,6 +154,8 @@ export default function Home() {
               {error}
             </div>
           )}
+
+          {!result && <VoiceTriagePanel />}
 
           <AnimatePresence mode="wait">
             {!result ? (
