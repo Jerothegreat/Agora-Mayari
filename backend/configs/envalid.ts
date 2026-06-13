@@ -18,16 +18,13 @@ try {
     REFRESH_TOKEN_SECRET: str(),
     GROQ_API_KEY: str(),
     GROQ_MODEL: str({ default: "llama-3.3-70b-versatile" }),
-    AGORA_APP_ID: str({ default: "" }),
-    AGORA_APP_CERTIFICATE: str({ default: "" }),
-    AGORA_CUSTOMER_KEY: str({ default: "" }),
-    AGORA_CUSTOMER_SECRET: str({ default: "" }),
-    AZURE_TTS_KEY: str({ default: "" }),
-    AZURE_TTS_REGION: str({ default: "" }),
-    AGORA_PIPELINE_ID: str({ default: "" }),
-    WEB_ORIGINS: str({
-      default: "http://localhost:5173,http://localhost:3000",
-    }),
+    LIVEKIT_URL: str({ default: "" }),
+    LIVEKIT_API_KEY: str({ default: "" }),
+    LIVEKIT_API_SECRET: str({ default: "" }),
+    DEEPGRAM_API_KEY: str({ default: "" }),
+    CARTESIA_API_KEY: str({ default: "" }),
+    TTS_PROVIDER: str({ default: "cartesia" }),
+    WEB_ORIGIN: str({ default: "http://localhost:5173" }),
   });
 } catch (error) {
   console.error("Environment validation failed:", error);

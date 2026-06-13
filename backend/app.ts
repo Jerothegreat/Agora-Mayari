@@ -5,7 +5,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { corsOptions } from "./configs/corsOptions.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
-import agoraRoutes from "./routes/agoraRoutes.js";
+import livekitRoutes from "./routes/livekitRoutes.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import consultationRoutes from "./routes/consultationRoutes.js";
@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 app.use("/", root);
 app.use("/api", haliyaRoutes);
-app.use("/api/agora", agoraRoutes);
+app.use("/api/livekit", livekitRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/patients", patientRoutes);

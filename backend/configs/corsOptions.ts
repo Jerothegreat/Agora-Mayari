@@ -1,7 +1,7 @@
 import { type CorsOptions } from "cors";
 import { env } from "./envalid.js";
 
-const allowedOrigins = env.WEB_ORIGINS.split(",")
+const allowedOrigins = env.WEB_ORIGIN.split(",")
   .map((origin: string) => origin.trim())
   .filter(Boolean);
 

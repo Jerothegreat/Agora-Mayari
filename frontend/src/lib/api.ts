@@ -100,17 +100,15 @@ export type VoiceTranscriptTurn = {
 };
 
 export type StartVoiceSessionResponse = {
-  channelName: string;
   token: string;
-  uid: string;
-  agentId: string;
+  roomName: string;
   sessionId: string;
+  url: string;
 };
 
 export type EndVoiceSessionRequest = {
   sessionId: string;
-  agentId: string;
-  channelName: string;
+  roomName: string;
   transcript: VoiceTranscriptTurn[];
   urgency: "low" | "medium" | "high" | null;
   specialty: string | null;
@@ -251,7 +249,7 @@ export async function getTriage(data: TriageRequest): Promise<TriageResponse> {
 }
 
 export async function startVoiceSession(): Promise<{ success: true; data: StartVoiceSessionResponse }> {
-  const response = await fetch(`${API_URL}/agora/session/start`, {
+  const response = await fetch(`${API_URL}/livekit/token`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -261,7 +259,7 @@ export async function startVoiceSession(): Promise<{ success: true; data: StartV
 export async function endVoiceSession(
   data: EndVoiceSessionRequest,
 ): Promise<{ success: true; data: EndVoiceSessionResponse }> {
-  const response = await fetch(`${API_URL}/agora/session/end`, {
+  const response = await fetch(`${API_URL}/livekit/session/end`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),

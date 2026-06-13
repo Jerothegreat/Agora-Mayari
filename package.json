@@ -12,19 +12,25 @@
     "react-dom": "19.2.5"
   },
   "scripts": {
-    "dev": "concurrently -k -n api,web -c blue,green \"npm run dev:api\" \"npm run dev:web\"",
-    "dev:web": "npm run dev -w frontend",
-    "dev:api": "npm run dev -w backend",
-    "build": "npm run build:api && npm run build:web",
-    "build:web": "npm run build -w frontend",
-    "build:api": "npm run build -w backend",
-    "lint": "npm run lint:web",
-    "lint:web": "npm run lint -w frontend",
+    "dev": "concurrently -k -n api,web -c blue,green \"pnpm run dev:api\" \"pnpm run dev:web\"",
+    "dev:web": "pnpm --filter frontend dev",
+    "dev:api": "pnpm --filter backend dev",
+    "build": "pnpm run build:api && pnpm run build:web",
+    "build:web": "pnpm --filter frontend build",
+    "build:api": "pnpm --filter backend build",
+    "lint": "pnpm run lint:web",
+    "lint:web": "pnpm --filter frontend lint",
     "clean": "rm -rf backend/dist frontend/.next",
-    "db:generate": "npm run db:generate -w backend",
-    "db:migrate": "npm run db:migrate -w backend"
+    "db:generate": "pnpm --filter backend db:generate",
+    "db:migrate": "pnpm --filter backend db:migrate",
+    "dev:agent": "pnpm --filter backend agent"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "protobufjs"
+    ]
   }
 }

@@ -9,10 +9,9 @@ export type TranscriptTurn = {
 export interface VoiceSessionState {
   status: "idle" | "connecting" | "active" | "ended";
   sessionId: string | null;
-  agentId: string | null;
-  channelName: string | null;
+  roomName: string | null;
   token: string | null;
-  uid: string | null;
+  url: string | null;
   transcript: TranscriptTurn[];
   urgency: "low" | "medium" | "high" | null;
   specialty: string | null;
@@ -28,10 +27,9 @@ const initialState: Omit<
 > = {
   status: "idle",
   sessionId: null,
-  agentId: null,
-  channelName: null,
+  roomName: null,
   token: null,
-  uid: null,
+  url: null,
   transcript: [],
   urgency: null,
   specialty: null,
