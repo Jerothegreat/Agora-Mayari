@@ -12,6 +12,7 @@
     "react-dom": "19.2.5"
   },
   "scripts": {
+    "start": "pnpm --filter backend start",
     "dev": "concurrently -k -n api,web -c blue,green \"pnpm run dev:api\" \"pnpm run dev:web\"",
     "dev:web": "pnpm --filter frontend dev",
     "dev:api": "pnpm --filter backend dev",
