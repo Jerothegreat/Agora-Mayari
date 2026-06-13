@@ -12,7 +12,8 @@
     "build": "tsc",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "agent": "tsx agent/index.ts dev"
+    "agent": "tsx agent/index.ts dev",
+    "agent:start": "tsx agent/index.ts start"
   },
   "dependencies": {
     "@livekit/agents": "^1.4.5",
