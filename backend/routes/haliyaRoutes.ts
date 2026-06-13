@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Router } from "express";
 import { getTriage, getHistory, getHealthSummary } from "../controllers/triageController.js";
 import { 
   getDashboardSummary, 
@@ -10,7 +10,7 @@ import {
   getAnomalySignals
 } from "../controllers/healthIntelligenceController.js";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/triage", getTriage);
 router.get("/triage/history", getHistory);

@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import { desc, eq } from "drizzle-orm";
-import type { Request, Response } from "express";
+import type { Request, Response, Router } from "express";
 import express from "express";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import { AccessToken } from "livekit-server-sdk";
@@ -21,7 +21,7 @@ type TriageResult = {
 };
 type ControllerResult<T> = { statusCode: number; body: T };
 
-const router = express.Router();
+const router: Router = express.Router();
 
 const createMockResponse = <T>(resolve: (result: ControllerResult<T>) => void) => {
   const response = {

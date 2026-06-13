@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Router } from "express";
 import { 
   login, 
   registerPatient, 
@@ -9,7 +9,7 @@ import {
 } from "../controllers/authControllers.js";
 import { verifyJWT } from "../middlewares/verifyJWT.js";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/login", login);
 router.post("/register/patient", registerPatient);

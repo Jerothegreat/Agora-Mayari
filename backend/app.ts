@@ -1,6 +1,6 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import express from "express";
+import express, { type Application } from "express";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { corsOptions } from "./configs/corsOptions.js";
@@ -15,7 +15,7 @@ import patientRoutes from "./routes/patientRoutes.js";
 import root from "./routes/root.js";
 import userRoutes from "./routes/userRoutes.js";
 
-const app = express();
+const app: Application = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 

@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Router } from "express";
 import {
   createAppointment,
   getAllAppointments,
@@ -11,7 +11,7 @@ import {
 } from "../controllers/appointmentControllers.js";
 import { verifyJWT } from "../middlewares/verifyJWT.js";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.use(verifyJWT);
 

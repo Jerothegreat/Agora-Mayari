@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Router } from "express";
 import {
   createUser,
   getAllUsers,
@@ -6,7 +6,7 @@ import {
   updateUser,
 } from "../controllers/userControllers.js";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/create", createUser);
 // router.use(verifyJWT);

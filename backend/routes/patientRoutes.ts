@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Router } from "express";
 import {
   createPatient,
   getAllPatients,
@@ -9,7 +9,7 @@ import {
 } from "../controllers/patientControllers.js";
 import { verifyJWT } from "../middlewares/verifyJWT.js";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.get("/me", verifyJWT, getMyPatientProfile);
 router.patch("/me", verifyJWT, updateMyPatientProfile);

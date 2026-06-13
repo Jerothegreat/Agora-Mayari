@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Router } from "express";
 import {
   createConsultation,
   getAllConsultations,
@@ -6,7 +6,7 @@ import {
   updateConsultation,
 } from "../controllers/consultationControllers.js";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 // router.use(verifyJWT);
 router

@@ -1,11 +1,11 @@
-import express from "express";
+import express, { type Router } from "express";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.get(["/health", "/api/health"], (_req, res) => {
   res.json({ status: "ok" });
