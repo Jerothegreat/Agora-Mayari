@@ -15,7 +15,7 @@ export default function NotFound() {
         {/* Logo */}
         <div className="flex items-center justify-center gap-2 opacity-50">
           <HeartPulse className="text-teal-600" size={32} />
-          <span className="text-2xl font-black tracking-tighter text-slate-800">HALIYA</span>
+          <span className="text-2xl font-black tracking-tighter text-slate-800">MAYARI</span>
         </div>
 
         {/* 404 */}

@@ -23,9 +23,9 @@ export default function AccountDangerZone({ tone = 'teal' }: AccountDangerZonePr
     setIsDeleting(true);
     setError('');
     try {
-      const sessionToken = window.localStorage.getItem('haliya_session_token') || undefined;
+      const sessionToken = window.localStorage.getItem('mayari_session_token') || undefined;
       await deleteMyAccount(user.token, sessionToken);
-      window.localStorage.removeItem('haliya_session_token');
+      window.localStorage.removeItem('mayari_session_token');
       logout();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unable to delete account right now.');

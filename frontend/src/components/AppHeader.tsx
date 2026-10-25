@@ -38,15 +38,15 @@ export default function AppHeader({ navItems, extraActions, className, showLangu
         <Link href="/" className="flex min-w-0 items-center gap-3">
           <Image
             src="/img/logo.jpg"
-            alt="Haliya logo"
+            alt="Mayari logo"
             width={44}
             height={44}
             className="h-11 w-11 rounded-2xl object-cover shadow-lg shadow-teal-200/70 ring-1 ring-white/70"
             priority
           />
           <span className="hidden leading-none sm:block">
-            <span className="block font-sans text-2xl font-black tracking-normal text-slate-900">HALIYA</span>
-            <span className="mt-1 block text-[10px] font-black uppercase tracking-normal text-teal-700">Health Intelligence</span>
+            <span className="block font-sans text-2xl font-black tracking-normal text-slate-900">MAYARI</span>
+            <span className="mt-1 block text-[10px] font-black uppercase tracking-normal text-teal-700">Voice Intake</span>
           </span>
         </Link>
 

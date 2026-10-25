@@ -89,12 +89,12 @@ export default function FacilityLoginPage() {
           <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 ml-1">Demo Facility Access</p>
           <button 
             onClick={() => {
-              setEmail('provider@haliya.ph');
+              setEmail('provider@mayari.ph');
               setPassword('provider123');
             }}
             className="w-full p-3 bg-white border border-slate-200 rounded-xl text-left hover:border-blue-500 transition-all group"
           >
-            <p className="text-sm font-bold text-slate-700 group-hover:text-blue-600">provider@haliya.ph</p>
+            <p className="text-sm font-bold text-slate-700 group-hover:text-blue-600">provider@mayari.ph</p>
             <p className="text-xs text-slate-400">Password: provider123 (Click to autofill)</p>
           </button>
         </div>

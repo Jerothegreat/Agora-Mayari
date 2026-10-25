@@ -89,12 +89,12 @@ export default function LoginPage() {
           <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 ml-1">Demo Patient Access</p>
           <button 
             onClick={() => {
-              setEmail('patient@haliya.ph');
+              setEmail('patient@mayari.ph');
               setPassword('patient123');
             }}
             className="w-full p-3 bg-white border border-slate-200 rounded-xl text-left hover:border-teal-500 transition-all group"
           >
-            <p className="text-sm font-bold text-slate-700 group-hover:text-teal-600">patient@haliya.ph</p>
+            <p className="text-sm font-bold text-slate-700 group-hover:text-teal-600">patient@mayari.ph</p>
             <p className="text-xs text-slate-400">Password: patient123 (Click to autofill)</p>
           </button>
         </div>

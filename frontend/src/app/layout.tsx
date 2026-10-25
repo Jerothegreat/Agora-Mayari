@@ -6,24 +6,24 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
 export const metadata: Metadata = {
-  title: "Haliya | AI-Powered Health Triage for the Philippines",
-  description: "Intelligent health assessment and trend monitoring for the Philippines. Get instant AI-powered symptom analysis, book appointments, and contribute to community health intelligence.",
-  keywords: ["health triage", "AI health", "symptom checker", "Philippines healthcare", "medical assessment", "appointment booking"],
-  authors: [{ name: "Haliya Health Team" }],
+  title: "Mayari | AI Voice Patient Intake for Philippine Clinics",
+  description: "Mayari is a real-time AI voice patient intake and booking agent for Philippine medical clinics. Sumasagot kung hindi kaya ng clinic mo.",
+  keywords: ["AI voice intake", "patient booking", "Philippines healthcare", "medical triage", "clinic booking", "Tagalog health AI"],
+  authors: [{ name: "Mayari Health" }],
   icons: {
     icon: "/img/logo.jpg",
     apple: "/img/logo.jpg",
   },
   openGraph: {
-    title: "Haliya | AI-Powered Health Triage",
-    description: "Intelligent health assessment and trend monitoring for the Philippines",
+    title: "Mayari | AI Voice Patient Intake",
+    description: "Real-time AI voice patient intake and booking for Philippine medical clinics.",
     type: "website",
     locale: "en_PH",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Haliya | AI-Powered Health Triage",
-    description: "Intelligent health assessment and trend monitoring for the Philippines",
+    title: "Mayari | AI Voice Patient Intake",
+    description: "Real-time AI voice patient intake and booking for Philippine medical clinics.",
   },
 };
 
@@ -43,7 +43,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('haliya_theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'};document.documentElement.classList.toggle('dark',t==='dark');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;}catch(e){}`,
+            __html: `try{var t=localStorage.getItem('mayari_theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'};document.documentElement.classList.toggle('dark',t==='dark');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;}catch(e){}`,
           }}
         />
       </head>

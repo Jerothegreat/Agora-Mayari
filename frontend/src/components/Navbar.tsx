@@ -55,13 +55,13 @@ export default function Navbar({ language, onLanguageToggle, showLanguageToggle 
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/img/logo.jpg"
-            alt="Haliya logo"
+            alt="Mayari logo"
             width={36}
             height={36}
             className="h-9 w-9 rounded-xl object-cover shadow-lg shadow-teal-200"
             priority
           />
-          <span className="font-sans text-2xl font-black tracking-tighter text-slate-800">HALIYA</span>
+          <span className="font-sans text-2xl font-black tracking-tighter text-slate-800">MAYARI</span>
         </Link>
 
         {/* Nav Links */}

@@ -25,7 +25,7 @@ export default function LandingPage() {
       heroTitleLine1: 'The future of',
       heroTitleHighlight: 'health triage',
       heroTitleLine3: 'is here.',
-      heroDesc: 'Haliya bridges the gap between symptoms and care. Use our AI to assess urgency, track health trends, and book appointments—all in one place.',
+      heroDesc: 'Mayari is a real-time AI voice patient intake and booking agent for Philippine medical clinics. Sumasagot kung hindi kaya ng clinic mo.',
       ctaPrimary: 'Check My Symptoms',
       ctaSecondary: 'For Health Facilities',
       accuracyLabel: 'Evidence Ledger',
@@ -33,7 +33,7 @@ export default function LandingPage() {
       statsFacilities: 'Verified Facilities',
       statsAvgTime: 'Avg AI Triage Time',
       statsOutbreaks: 'Outbreaks Prevented',
-      featuresTitle: 'How Haliya Works',
+      featuresTitle: 'How Mayari Works',
       featuresDesc: 'Streamlining the journey from first symptom to full recovery.',
       feature1Title: 'AI Triage',
       feature1Desc: 'Describe how you feel in English or Filipino. Our AI classifies urgency in seconds.',
@@ -50,7 +50,7 @@ export default function LandingPage() {
       heroTitleLine1: 'Ang kinabukasan ng',
       heroTitleHighlight: 'health triage',
       heroTitleLine3: 'ay nandito na.',
-      heroDesc: 'Pinagdurugtong ng Haliya ang sintomas at tamang pag-aalaga. Gamitin ang AI namin para masukat ang urgency, subaybayan ang health trends, at mag-book ng appointment—lahat sa iisang lugar.',
+      heroDesc: 'Si Mayari ay isang real-time AI voice intake at booking agent para sa mga Philippine medical clinic. Sumasagot kung hindi kaya ng clinic mo.',
       ctaPrimary: 'Suriin ang Sintomas Ko',
       ctaSecondary: 'Para sa Mga Pasilidad',
       accuracyLabel: 'Evidence Ledger',
@@ -58,7 +58,7 @@ export default function LandingPage() {
       statsFacilities: 'Na-verify na Pasilidad',
       statsAvgTime: 'Avg AI Triage Time',
       statsOutbreaks: 'Mga Outbreak na Naiwasan',
-      featuresTitle: 'Paano Gumagana ang Haliya',
+      featuresTitle: 'Paano Gumagana ang Mayari',
       featuresDesc: 'Mas mabilis ang journey mula unang sintomas hanggang paggaling.',
       feature1Title: 'AI Triage',
       feature1Desc: 'Ilarawan ang pakiramdam mo sa English o Filipino. Inia-assess ng AI ang urgency sa loob ng ilang segundo.',
@@ -197,7 +197,7 @@ export default function LandingPage() {
           <div className="space-y-6">
             <div className="flex items-center gap-2">
               <HeartPulse className="text-teal-600" size={32} />
-              <span className="text-xl font-black tracking-tighter">HALIYA</span>
+              <span className="text-xl font-black tracking-tighter">MAYARI</span>
             </div>
             <p className="text-slate-500 max-w-xs font-medium italic">{t.footerTagline}</p>
           </div>
@@ -222,7 +222,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto pt-12 mt-12 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-6">
-          <p className="text-sm text-slate-400 font-medium">© 2026 Haliya Health. Built for CODEKADA Hackathon.</p>
+          <p className="text-sm text-slate-400 font-medium">© 2026 Mayari Health.</p>
         </div>
       </footer>
     </main>
